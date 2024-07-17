@@ -1,5 +1,10 @@
 pipeline {
   agent {
+      docker {
+        image 'alpine/helm:latest'
+      }
+    }
+  agent {
   
     kubernetes {
       yaml '''
