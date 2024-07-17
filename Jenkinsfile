@@ -1,5 +1,8 @@
 pipeline {
   agent {
+    docker {
+      image 'alpine/helm:latest'
+    }
     kubernetes {
       yaml '''
 apiVersion: v1
@@ -63,6 +66,10 @@ spec:
         }
       }
     }
+    stage('deploy') {
+      sh 'helm version'
+    }
+    
   }
 }
 
