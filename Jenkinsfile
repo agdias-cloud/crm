@@ -63,9 +63,7 @@ spec:
         }
       }
     }
-    stage('deploy') {
-      sh 'helm version'
-    }
+  
     
   }
 }
