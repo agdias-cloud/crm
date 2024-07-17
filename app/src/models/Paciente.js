@@ -10,7 +10,7 @@ const PacienteSchema = new Schema({
   whatsapp: String,
   email: String,
   cpf: Number,
-  dataNascimento: Date,
+  dataNascimento: String,
   endereco: String,
   cep: Number
 })
