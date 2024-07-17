@@ -1,11 +1,5 @@
 pipeline {
   agent {
-      docker {
-        image 'alpine/helm:latest'
-      }
-    }
-  agent {
-  
     kubernetes {
       yaml '''
 apiVersion: v1
