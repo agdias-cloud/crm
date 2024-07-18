@@ -4,4 +4,4 @@ RUN mkdir /app
 COPY app/ /app/
 WORKDIR /app
 RUN npm install
-ENTRYPOINT ["npm", "run", "prod"]
+ENTRYPOINT ["npm", "run", "prd"]
