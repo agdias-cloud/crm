@@ -93,6 +93,7 @@ spec:
             }
       steps {
         sh 'helm version'
+      }
     }
   
     
