@@ -74,12 +74,11 @@ spec:
                     apiVersion: v1
                     kind: Pod
                     metadata:
-                      labels:
-                        some-label: helm-agent
+                      name: helm-agent
                     spec:
                       containers:
                       - name: helm
-                        image: agdiascloud/helm
+                        image: docker.io/agdiascloud/helm
                         command:
                         - cat
                         tty: true
@@ -88,11 +87,11 @@ spec:
                 }
             }
       steps {
-        sh 'helm version'
+        container('helm-agent') {
+            sh 'helm version'
+        }
       }
     }
-  
-    
   }
 }
 
