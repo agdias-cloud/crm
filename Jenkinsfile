@@ -64,9 +64,35 @@ spec:
       }
     }
     stage('deploy') {
+       agent {
+             
+                kubernetes {
+                    // Configure Kubernetes pod template with Helm
+                    label 'helm-agent'
+                    defaultContainer 'jnlp'
+                    yaml """
+                    apiVersion: v1
+                    kind: Pod
+                    metadata:
+                      labels:
+                        some-label: helm-agent
+                    spec:
+                      containers:
+                      - name: helm
+                        image: bitnami/helm:latest
+                        command:
+                        - cat
+                        tty: true
+                      - name: kubectl
+                        image: lachlanevenson/k8s-kubectl:latest
+                        command:
+                        - cat
+                        tty: true
+                    """
+                }
+            }
       steps {
-        sh 'helm --version'
-      }
+        sh 'helm version'
     }
   
     
