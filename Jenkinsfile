@@ -78,7 +78,7 @@ spec:
                     spec:
                       containers:
                       - name: helm
-                        image: docker.io/agdiascloud/helm
+                        image: agdiascloud/helm:v0
                         command:
                         - cat
                         tty: true
