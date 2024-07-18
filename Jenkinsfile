@@ -79,15 +79,11 @@ spec:
                     spec:
                       containers:
                       - name: helm
-                        image: bitnami/helm:latest
+                        image: agdiascloud/helm
                         command:
                         - cat
                         tty: true
-                      - name: kubectl
-                        image: lachlanevenson/k8s-kubectl:latest
-                        command:
-                        - cat
-                        tty: true
+                     
                     """
                 }
             }
