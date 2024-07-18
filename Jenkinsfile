@@ -63,7 +63,7 @@ spec:
         }
       }
     }
-    stage('deploy') {
+    /* stage('deploy') {
       agent {    
         kubernetes {
             label 'helm-agent'
@@ -92,7 +92,7 @@ spec:
                     sh 'helm install my-release stable/mysql'
                 }
       }
-    }
+    } */
   }
 }
 
