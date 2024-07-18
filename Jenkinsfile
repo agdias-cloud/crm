@@ -64,28 +64,27 @@ spec:
       }
     }
     stage('deploy') {
-       agent {
+      agent {    
+        kubernetes {
+            // Configure Kubernetes pod template with Helm
+            label 'helm-agent'
+            defaultContainer 'jnlp'
+            yaml """
+                  apiVersion: v1
+                  kind: Pod
+                  metadata:
+                    name: helm-agent
+                  spec:
+                    containers:
+                    - name: helm
+                      image: agdiascloud/helm:v0
+                      command:
+                      - cat                  
+                      tty: true              
              
-                kubernetes {
-                    // Configure Kubernetes pod template with Helm
-                    label 'helm-agent'
-                    defaultContainer 'jnlp'
-                    yaml """
-                    apiVersion: v1
-                    kind: Pod
-                    metadata:
-                      name: helm-agent
-                    spec:
-                      containers:
-                      - name: helm
-                        image: agdiascloud/helm:v0
-                        command:
-                        - cat
-                        tty: true
-                     
-                    """
-                }
-            }
+            """
+        }
+      }
       steps {
         container('helm-agent') {
             sh 'helm version'
