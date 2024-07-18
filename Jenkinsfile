@@ -66,29 +66,31 @@ spec:
     stage('deploy') {
       agent {    
         kubernetes {
-            // Configure Kubernetes pod template with Helm
             label 'helm-agent'
             defaultContainer 'jnlp'
             yaml """
-                  apiVersion: v1
-                  kind: Pod
-                  metadata:
-                    name: helm-agent
-                  spec:
-                    containers:
-                    - name: helm
-                      image: agdiascloud/helm:v0
-                      command:
-                      - cat                  
-                      tty: true              
-             
+            apiVersion: v1
+            kind: Pod
+            metadata:
+              name: helm
+            spec:
+              containers:
+              - name: helm
+                image: alpine/helm:latest
+                command:
+                - cat
+                tty: true
             """
-        }
+        }       
       }
       steps {
-        container('helm-agent') {
-            sh 'helm version'
-        }
+        container('helm') {
+                    // Inside the helm container, execute Helm commands
+                    sh 'helm version'
+                    sh 'helm repo add stable https://charts.helm.sh/stable'
+                    sh 'helm repo update'
+                    sh 'helm install my-release stable/mysql'
+                }
       }
     }
   }
