@@ -43,7 +43,7 @@ spec:
     }
     stage('buildah login') {
       environment {
-        DH_CREDS = credentials('Harbor')
+        DH_CREDS = credentials('harbor-admin')
       }
       steps {
         container('buildah') {
