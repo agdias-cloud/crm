@@ -1,7 +1,7 @@
 pipeline {
   environment {
     DOCKER_CERT_PATH='/etc/docker/certs.d'
-    DOCKER_TLS_VERIFY = '1'
+    DOCKER_TLS_VERIFY = '0'
   }
   agent {
     kubernetes {
