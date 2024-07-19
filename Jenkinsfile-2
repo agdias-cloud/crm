@@ -62,7 +62,7 @@ spec:
     stage('push image') {
       steps {
         container('buildah') {
-          sh 'buildah push --cert-dir="/var/jenkins_home/certs" --tls-verify=false  harbor.kube.local/public/crm:v0'  
+          sh 'buildah push  --tls-verify=false  harbor.kube.local/public/crm:v0'  
         }
       }
     }
