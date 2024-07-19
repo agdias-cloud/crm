@@ -47,7 +47,7 @@ spec:
       }
       steps {
         container('buildah') {
-             sh 'echo $DH_CREDS_PSW | buildah  --tls-verify=false -u $DH_CREDS_USR --password-stdin harbor.kube.local'
+             sh 'echo $DH_CREDS_PSW | buildah login  --tls-verify=false -u $DH_CREDS_USR --password-stdin harbor.kube.local'
         }
       }
     }
