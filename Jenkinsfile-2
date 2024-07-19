@@ -44,14 +44,14 @@ spec:
       }
       steps {
         container('buildah') {
-             sh 'echo $DH_CREDS_PSW | buildah login -u $DH_CREDS_USR --password-stdin https://harbor.kube.local'
+             sh 'echo $DH_CREDS_PSW | buildah login -u $DH_CREDS_USR --password-stdin harbor.kube.local'
         }
       }
     }
     stage('tag image') {
       steps {
         container('buildah') {
-          sh 'buildah tag crm:v0  agdiascloud/crm:v0'
+          sh 'buildah tag crm:v0 harbor.kube.local/public/crm:v0'
         
         }
       }
@@ -59,7 +59,7 @@ spec:
     stage('push image') {
       steps {
         container('buildah') {
-          sh 'buildah push agdiascloud/crm:v0'  
+          sh 'buildah push harbor.kube.local/public/crm:v0'  
         }
       }
     }
