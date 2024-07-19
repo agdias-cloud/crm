@@ -62,7 +62,7 @@ spec:
     stage('push image') {
       steps {
         container('buildah') {
-          sh 'buildah push harbor.kube.local/public/crm:v0'  
+          sh 'buildah push --certs-dir="/var/jenkins_home/certs" harbor.kube.local/public/crm:v0'  
         }
       }
     }
