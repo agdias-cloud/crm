@@ -62,7 +62,7 @@ spec:
     stage('push image') {
       steps {
         container('buildah') {
-          sh 'buildah push  --tls-verify=false  harbor.kube.local/library/crm:v0'  
+          sh 'buildah push   harbor.kube.local/library/crm:v0'  
         }
       }
     }
