@@ -40,11 +40,11 @@ spec:
     }
     stage('buildah login') {
       environment {
-        DH_CREDS = credentials('dockerhub')
+        DH_CREDS = credentials('harbor')
       }
       steps {
         container('buildah') {
-             sh 'echo $DH_CREDS_PSW | buildah login -u $DH_CREDS_USR --password-stdin docker.io'
+             sh 'echo $DH_CREDS_PSW | buildah login -u $DH_CREDS_USR --password-stdin harbor.internal.local'
         }
       }
     }
