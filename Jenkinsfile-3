@@ -22,17 +22,19 @@ pipeline {
       '''
       retries 2
     }
-    stages {
-      stage('Run maven') {
-        steps {
-          container('maven') {
-            sh 'mvn -version'
-          }
-          container('busybox') {
-            sh '/bin/busybox'
-          }
+  }
+  stages {
+    stage('Run maven') {
+      steps {
+        container('maven') {
+          sh 'mvn -version'
         }
+        container('busybox') {
+          sh '/bin/busybox'
+        }
+      }
     }
   }
-
 }
+
+
